@@ -1,0 +1,23 @@
+@model Category;
+<h1>In categories</h1>
+<div class="d-flex mx-auto justify-content-between">
+
+    <div class="col-4">
+        <form asp-action="CreateCategory" asp-controller="Home" method="post">
+            <div class="form-group">
+                <span asp-validation-for="CategoryName"></span>
+                <label asp-for="CategoryName"></label>
+                <input class="form-control" asp-for="CategoryName">
+            </div>
+            <input class="btn btn-primary" value="Create" type="submit">
+        </form>
+    </div>
+    <div class="text-center">
+        <h3>Current Categories</h3>
+        @foreach (var c in ViewBag.Categories)
+        {   
+            <a class="mx-auto" href="category/@c.CategoryId">@c.CategoryName</a>
+            <br>
+        }
+    </div>
+</div>
